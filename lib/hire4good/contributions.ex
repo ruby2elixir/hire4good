@@ -4,6 +4,34 @@ defmodule Hire4Good.Contributions do
   end
 
   def collect(github_name) do
+    github_name
+    |> collect_pages
+    |> Enum.map(&parse/1)
+    |> List.flatten
+  end
+
+  def collect_pages(name) do
+    collect_pages([], 1, name)
+  end
+  def collect_pages(pages, nil, _name) do
+    pages
+  end
+  def collect_pages(pages, next_num, name) do
+    {:ok, page} = fetch(name, next_num)
+    pages = [page | pages]
+    collect_pages(pages, next_page_num(page), name)
+  end
+
+  def libraries_url(name, page) do
+    "https://libraries.io/github/#{name}/contributions?page=#{page}"
+  end
+
+  def fetch(name, page) do
+    IO.puts "fetching page #{page} for #{name}..."
+    case HTTPoison.get(libraries_url(name, page)) do
+      {:ok,  %HTTPoison.Response{body: body} } -> {:ok, body}
+      {:error, res } -> {:error, res}
+    end
   end
 
   def parse(html) do
