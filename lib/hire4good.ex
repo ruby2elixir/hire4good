@@ -1,2 +1,2 @@
-defmodule Hire4good do
+defmodule Hire4Good do
 end

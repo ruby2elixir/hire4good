@@ -1,6 +1,6 @@
-defmodule Hire4goodTest do
+defmodule Hire4Good.Test do
   use ExUnit.Case
-  doctest Hire4good
+  doctest Hire4Good
 
   test "the truth" do
     assert 1 + 1 == 2

@@ -1,4 +1,4 @@
-defmodule Hire4good.Mixfile do
+defmodule Hire4Good.Mixfile do
   use Mix.Project
 
   def project do
@@ -31,7 +31,6 @@ defmodule Hire4good.Mixfile do
       {:httpoison, "~> 0.9.0"},
       {:floki, "~> 0.10.0"},
       {:mr_t, "> 0.0.0", only: [:test, :dev]},
-
     ]
   end
 end
