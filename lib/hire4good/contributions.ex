@@ -11,6 +11,17 @@ defmodule Hire4Good.Contributions do
     |> Enum.map(&parse_project/1)
   end
 
+  def next_page_num(html) do
+    url = Floki.find(html, "a[rel=next]")
+    |> Floki.attribute("href")
+    |> List.first
+
+    case url do
+      nil -> nil
+      url -> Regex.run(~r/\?page=(\d+)/, url) |> List.last |> String.to_integer
+    end
+  end
+
   def parse_project(el) do
     %Project{
       url:   parse_url(el),
