@@ -1,4 +1,5 @@
  TODO:
    ✔ collect repositories @done (16-08-27 19:50)
    ☐ cache HTML pages in memory (ETS table / Agent /etc..)
-
+    - https://github.com/ccressent/edkvs/tree/master/apps/edkvs
+    - https://github.com/endeepak/elixir-kv/tree/master/lib/kv
